@@ -1,0 +1,55 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x129c990 .scope module, "align_test" "align_test" 2 3;
+ .timescale -9 -12;
+v0x12ce550_0 .var "need_regids", 0 0;
+v0x12ce5f0_0 .var "need_valC", 0 0;
+v0x12ce6a0_0 .var "pc", 63 0;
+v0x12ce750_0 .net "valP", 63 0, L_0x12cf210; 1 drivers
+S_0x12bd4b0 .scope module, "uut" "PC_increment" 2 13, 3 2, S_0x129c990;
+ .timescale -9 -12;
+v0x12bd5a0_0 .net *"_s0", 66 0, L_0x12ce830; 1 drivers
+v0x12cdb40_0 .net *"_s11", 66 0, L_0x12cec40; 1 drivers
+v0x12cdbe0_0 .net *"_s12", 66 0, L_0x12ced80; 1 drivers
+v0x12cdc80_0 .net *"_s14", 66 0, L_0x12ceec0; 1 drivers
+v0x12cdd30_0 .net *"_s17", 65 0, C4<000000000000000000000000000000000000000000000000000000000000000000>; 1 drivers
+v0x12cddd0_0 .net *"_s18", 66 0, L_0x12cf090; 1 drivers
+v0x12cdeb0_0 .net *"_s3", 2 0, C4<000>; 1 drivers
+v0x12cdf50_0 .net *"_s4", 66 0, C4<0000000000000000000000000000000000000000000000000000000000000000001>; 1 drivers
+v0x12ce040_0 .net *"_s6", 66 0, L_0x12ce9e0; 1 drivers
+v0x12ce0e0_0 .net *"_s8", 66 0, C4<0000000000000000000000000000000000000000000000000000000000000001000>; 1 drivers
+v0x12ce1e0_0 .net "need_regids", 0 0, v0x12ce550_0; 1 drivers
+v0x12ce280_0 .net "need_valC", 0 0, v0x12ce5f0_0; 1 drivers
+v0x12ce390_0 .net "pc", 63 0, v0x12ce6a0_0; 1 drivers
+v0x12ce430_0 .alias "valP", 63 0, v0x12ce750_0;
+L_0x12ce830 .concat [ 64 3 0 0], v0x12ce6a0_0, C4<000>;
+L_0x12ce9e0 .arith/sum 67, L_0x12ce830, C4<0000000000000000000000000000000000000000000000000000000000000000001>;
+L_0x12cec40 .arith/mult 67, v0x12ce5f0_0, C4<0000000000000000000000000000000000000000000000000000000000000001000>;
+L_0x12ced80 .arith/sum 67, L_0x12ce9e0, L_0x12cec40;
+L_0x12ceec0 .concat [ 1 66 0 0], v0x12ce550_0, C4<000000000000000000000000000000000000000000000000000000000000000000>;
+L_0x12cf090 .arith/sum 67, L_0x12ced80, L_0x12ceec0;
+L_0x12cf210 .part L_0x12cf090, 0, 64;
+    .scope S_0x129c990;
+T_0 ;
+    %vpi_call 2 21 "$dumpfile", "PC_increment_test.vcd";
+    %set/v v0x12ce550_0, 1, 1;
+    %set/v v0x12ce5f0_0, 1, 1;
+    %movi 8, 56, 64;
+    %set/v v0x12ce6a0_0, 8, 64;
+    %end;
+    .thread T_0;
+    .scope S_0x129c990;
+T_1 ;
+    %vpi_call 2 29 "$monitor", "pc(%h) need_regids(%b) need_valC(%b) valP(%h)", v0x12ce6a0_0, v0x12ce550_0, v0x12ce5f0_0, v0x12ce750_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "PC_increment_test.v";
+    "PC_increment.v";

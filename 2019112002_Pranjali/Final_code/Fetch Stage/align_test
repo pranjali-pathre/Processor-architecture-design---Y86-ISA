@@ -1,0 +1,47 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1916ae0 .scope module, "align_test" "align_test" 2 3;
+ .timescale -9 -12;
+v0x194a980_0 .var "ibytes", 79 0;
+v0x194aa40_0 .var "need_regids", 0 0;
+v0x194aac0_0 .net "rA", 3 0, L_0x194ad00; 1 drivers
+v0x194ab70_0 .net "rB", 3 0, L_0x194adf0; 1 drivers
+v0x194ac50_0 .net "valC", 63 0, L_0x194b130; 1 drivers
+L_0x194b2c0 .part v0x194a980_0, 8, 72;
+S_0x1916250 .scope module, "uut" "align" 2 14, 3 5, S_0x1916ae0;
+ .timescale -9 -12;
+v0x1915ef0_0 .net *"_s5", 63 0, L_0x194af30; 1 drivers
+v0x194a570_0 .net *"_s7", 63 0, L_0x194afd0; 1 drivers
+v0x194a610_0 .net "ibytes", 71 0, L_0x194b2c0; 1 drivers
+v0x194a6b0_0 .net "need_regids", 0 0, v0x194aa40_0; 1 drivers
+v0x194a760_0 .alias "rA", 3 0, v0x194aac0_0;
+v0x194a800_0 .alias "rB", 3 0, v0x194ab70_0;
+v0x194a8e0_0 .alias "valC", 63 0, v0x194ac50_0;
+L_0x194ad00 .part L_0x194b2c0, 4, 4;
+L_0x194adf0 .part L_0x194b2c0, 0, 4;
+L_0x194af30 .part L_0x194b2c0, 8, 64;
+L_0x194afd0 .part L_0x194b2c0, 0, 64;
+L_0x194b130 .functor MUXZ 64, L_0x194afd0, L_0x194af30, v0x194aa40_0, C4<>;
+    .scope S_0x1916ae0;
+T_0 ;
+    %vpi_call 2 23 "$dumpfile", "align_test.vcd";
+    %movi 8, 587824, 80;
+    %set/v v0x194a980_0, 8, 80;
+    %set/v v0x194aa40_0, 1, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x1916ae0;
+T_1 ;
+    %vpi_call 2 30 "$monitor", "ibytes(%h) need_regids(%h) rA(%h) rB(%h) valC(%h)", &PV<v0x194a980_0, 8, 72>, v0x194aa40_0, v0x194aac0_0, v0x194ab70_0, v0x194ac50_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "align_test.v";
+    "align.v";
