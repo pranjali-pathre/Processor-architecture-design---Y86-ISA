@@ -1,4 +1,4 @@
-# Final-assignment
+# Y-86 ISA
 ## OVERVIEW
 
 Developed a processor architecture design based on the Y86 ISA using Verilog. The design is thoroughly tested to satisfy all the specification requirements using simulations. It includes
